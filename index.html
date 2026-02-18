@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba de Widget CCAI</title>
+    <script defer
+  src="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.12/chat-messenger.js">
+</script>
+<link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.12/themes/chat-messenger-default.css">
+<link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.10/themes/chat-messenger-layout.css">
     <style>
         /* Estilos básicos para que la página no se vea vacía */
         body {
@@ -43,5 +48,36 @@
       agent-id="TU_AGENT_ID_AQUÍ"
       language-code="es"
     ></df-messenger>
+
+
+    <script>
+    window.addEventListener("chat-messenger-loaded", () => {
+      chatSdk.registerContext(
+        chatSdk.prebuilts.ces.createContext({
+          deploymentName: "projects/poc-palacio/locations/us/apps/02e234c9-f9aa-4ff4-bb9d-3337fbce95da/deployments/c40f2b82-b742-49b9-a0cb-4ee1973a71ad",
+          tokenBroker: {
+            enableTokenBroker: true,
+            enableRecaptcha: false,
+          },
+        }),
+      );
+    });
+</script>
+<!-- Update the url-allowlist attribute with a comma-separated list of origins allowed to render images -->
+<chat-messenger
+  url-allowlist="*"
+>
+  <chat-messenger-container
+    chat-title="poc"
+    chat-title-icon="https://gstatic.com/dialogflow-console/common/assets/ccai-favicons/conversational_agents.png"
+    enable-file-upload
+    enable-audio-input
+  >
+    <chat-reset-session-button
+      slot="titlebar-actions"
+      title-text="Start new chat"
+    ></chat-reset-session-button>
+  </chat-messenger-container>
+</chat-messenger>
     </body>
 </html>
